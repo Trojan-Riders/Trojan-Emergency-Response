@@ -91,6 +91,7 @@
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 2%;
+    padding-bottom: 2%;
 }
 .form .label
 {
@@ -112,6 +113,22 @@
     width: 30%;
     border: 1px solid black;
     font-size: 150%;
+}
+
+.cards
+{
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.cards .card
+{
+    margin: 1%;
+}
+.cards .card h1
+{
+    font-size: 200%;
 }
 
 @media(max-width:554px)
@@ -142,6 +159,7 @@
         position: absolute;
         width: 100%;
         background-color: rgba(255,192,203,0.9);
+        z-index: 1;
     }
     .nav .button
     {
