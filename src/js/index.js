@@ -20,9 +20,17 @@ function submit()
     }
     else
     {
-        document.getElementById("home_email_id").value="";
-        document.getElementById("home_phone").value="";
-        document.getElementById("home_location").value="";
+        var mailer=document.getElementById("home_email_id").value;
+        console.log(mailer);
+        var location=document.getElementById("home_location").value;
+        var str="https://trojan-backends.herokuapp.com/user_data?email="+mailer+"&location="+location;
+        console.log(str);
+        fetch(str)
+        .then(response => response.json().then
+        (data => {
+            console.log(data);
+        }
+        ));
         alert("Your details are saved with us. We will contact you in case of any emergency in your area.")
     }
 }
