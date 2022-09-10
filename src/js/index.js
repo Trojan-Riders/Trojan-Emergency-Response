@@ -33,10 +33,22 @@ function submit_beds() {
         alert("Please enter the mandatory fields");
     }
     else {
+
+        var name = document.getElementById("beds_name").value;
+        var email = document.getElementById("beds_phone").value;
+        var location = document.getElementById("beds_location").value;
+        var d = `https://trojan-backends.herokuapp.com/beds?name=${name}&location=${location}`;
+        fetch(d)
+            .then(response => response.json().then
+                (data => {
+                    console.log(data);
+                    var message=`There are ${data["beds"]} beds available in ${name}`;
+                    alert(message);
+                }));
+
         document.getElementById("beds_name").value = "";
         document.getElementById("beds_phone").value = "";
         document.getElementById("beds_location").value = "";
-        alert("We will be sending you details of bed availability in your provided phone number");
     }
 }
 function submit_report() {
@@ -49,7 +61,7 @@ function submit_report() {
         var location = document.getElementById("report_location").value;
         var disaster = document.getElementById("report_disaster").value;
 
-        z = '{"body":"I am '+name+' reporting '+disaster+' recorded at '+location+'","from":"'+email+'","timestamp":0,"title":"Alert","to":"projcollab23@gmail.com"}';
+        z = '{"body":"I am ' + name + ' reporting ' + disaster + ' recorded at ' + location + '","from":"' + email + '","timestamp":0,"title":"Alert","to":"projcollab23@gmail.com"}';
         const options = {
             method: 'POST',
             headers: {
